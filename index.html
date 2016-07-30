@@ -15,6 +15,13 @@
 
 <body>
     <h1>Under Construction</h1>
+
+    <div class="container" ng-controller="PokeIndexController as poke">
+      <ul ng-repeat="pokemon in poke.pokemon">
+        <li>{{pokemon.name}}</li>
+        <li>{{pokemon.pokedex}}</li>
+      </ul>
+
 </body>
 
 </html>
