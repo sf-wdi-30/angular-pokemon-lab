@@ -33,4 +33,17 @@ PokeIndexController.$inject = ['$http'];
         console.log('There was an error posting the data', response);
       });
     };
+
+    app.deletePoke = function (pokemon) {
+
+    $http({
+      method: 'DELETE',
+      url: 'https://super-crud.herokuapp.com/pokemon/' + pokemon._id
+    }).then(function successCallback(json) {
+      var index = app.poke.indexOf(pokemon);
+      app.poke.splice(index,1);
+    }, function errorCallback(response) {
+      console.log('There was an error deleting the data', response);
+    });
+  };
   }
