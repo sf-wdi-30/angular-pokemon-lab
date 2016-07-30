@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="">
+<html ng-app="pokemonApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +17,31 @@
   <body>
     <div class="jumbotron">
       <div class="container">
-        <h1>It's your pokedex</h1>
+        <h1>Dirty Thirty Pokedex</h1>
         <p>Gotta CRUD 'em all!</p>
       </div>
     </div>
 
-    <div class="container" ng-controller="PokemonIndexController as pokemon"></div>
+    <div class="container" ng-controller="PokemonIndexController as pokemonCtrl">
+      <div ng-repeat="poke in pokemonCtrl.pokemon">
+        <div class="col-md-10">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <h4><a href="#" ng-hide="showing" ng-click="pokemonCtrl.showPoke(poke); showing = true">{{ poke.name }}</a></h4>
+
+                  <img src="{{ poke.image }}">
+                  <p># : {{ poke.pokedex }}</p>
+                  <p>Evolves from : {{ poke.evolves_from}}</p>
+                </div>
+                <div class="col-md-3"> <!-- BUTTONS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
