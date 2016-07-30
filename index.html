@@ -17,12 +17,80 @@
 
     <div class="container" ng-controller="PokeIndexController as pokeCtrl">
 
-      <ul ng-repeat="pokemon in pokeCtrl.poke">
-        <li>Name: {{pokemon.name}}</li>
-        <li>Pokedex: {{pokemon.pokedex}}</li>
-        <li>Evolves from: {{pokemon.evolves_from}}</li>
-        <li>Image: <img src= {{pokemon.image}}></li>
-      </ul>
+
+          <form class="form-horizontal" ng-submit="pokeCtrl.createPoke()">
+            <fieldset>
+
+              <!-- Form Name -->
+              <legend>Add New Poke</legend>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label">Pokemon Name: </label>
+                <div class="col-md-4">
+                <input id="name" ng-model="pokeCtrl.newPoke.name" type="text" class="form-control input-md" required="">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label">Pokedex: </label>
+                <div class="col-md-4">
+                <input ng-model="pokeCtrl.newPoke.pokedex" type="text" class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label">Evolves From:</label>
+                <div class="col-md-4">
+                <input ng-model="pokeCtrl.newPoke.evolves_from" type="text" class="form-control input-md">
+                </div>
+              </div>
+
+              <!-- Textarea -->
+              <div class="form-group">
+                <label class="col-md-4 control-label">Image URL: </label>
+                <div class="col-md-4">
+                  <textarea class="form-control" ng-model="pokeCtrl.newPoke.image"></textarea>
+                </div>
+              </div>
+
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label">Save New Pokemon</label>
+                <div class="col-md-4">
+                  <button class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+          <table class="table table-bordered" >
+            <thead>
+              <tr>
+                <th>Pokemon Name:</th>
+                <th>Pokedex</th>
+                <th>Evolves from</th>
+                <th>Image</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="pokemon in pokeCtrl.poke">
+              <tr>
+                <td>{{pokemon.name}}</td>
+                <td>{{pokemon.pokedex}}</td>
+                <td>{{pokemon.evolves_from}}</td>
+                <td><img src= {{pokemon.image}}></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+
+
+
 
 </body>
 
