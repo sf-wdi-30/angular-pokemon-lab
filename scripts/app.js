@@ -34,5 +34,30 @@ function PokemonIndexController($http) {
     });
   };
 
+  me.deletePoke = function(poke) {
+    $http({
+      method: 'DELETE',
+      url: 'https://super-crud.herokuapp.com/pokemon/' + poke._id
+    }).then(function successCb(json) {
+      var index = me.pokemon.indexOf(poke);
+      console.log(index);
+      me.pokemon.splice(index, 1);
+    }, function errorCb(response) {
+      console.log('ERROR', response);
+    });
+  };
+
+  me.editPoke = function(poke) {
+    $http({
+      method: 'PUT',
+      url: 'https://super-crud.herokuapp.com/pokemon/' + poke._id,
+      data: poke
+    }).then(function successCb(json) {
+      // check html
+    }, function errorCb(response) {
+      console.log('ERROR', response);
+    });
+  };
+
 
 }

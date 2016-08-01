@@ -28,14 +28,27 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
+                <!-- <div class="col-md-3">
+                  <h4 ng-show="showing"><a href="#" ng-hide="showing" ng-click="pokemonCtrl.showPoke(poke); showing = true">{{ poke.name }}</a></h4>
+                  <img ng-show="showing" src="{{ poke.image }}">
+                  <p ng-show="showing"># : {{ poke.pokedex }}</p>
+                  <p ng-show="showing">Evolves from : {{ poke.evolves_from}}</p>
+                </div> -->
                 <div class="col-md-3">
-                  <h4><a href="#" ng-hide="showing" ng-click="pokemonCtrl.showPoke(poke); showing = true">{{ poke.name }}</a></h4>
-
-                  <img src="{{ poke.image }}">
-                  <p># : {{ poke.pokedex }}</p>
-                  <p>Evolves from : {{ poke.evolves_from}}</p>
+                  <h4 ng-hide="editing"><a href="#" ng-click="pokemonCtrl.showPoke(poke)">{{ poke.name }}</a></h4>
+                  <input ng-show="editing" ng-model="poke.name" type="text" class="form-control">
+                  <img src="{{ poke.image }}" ng-hide="editing">
+                  <input ng-model="poke.image" ng-show="editing" type="text" class="form-control">
+                  <p># : <span ng-hide="editing">{{ poke.pokedex }}</span></p>
+                  <input ng-show="editing" ng-model="poke.pokedex" type="text" class="form-control">
+                  <p>Evolves from : <span ng-hide="editing">{{ poke.evolves_from}}</span></p>
+                  <input ng-show="editing" ng-model="poke.evolves_from" type="text" class="form-control">
                 </div>
                 <div class="col-md-3"> <!-- BUTTONS -->
+                  <button class="btn btn-info" ng-show="showing" ng-click="pokemonCtrl.showPoke(poke); showing = false">View all Pokemon</button>
+                  <button class="btn btn-warning" ng-click="pokemonCtrl.deletePoke(poke)">Delete</button>
+                  <button class="btn btn-primary" ng-click="pokemonCtrl.editPoke(poke); editing = true">Edit</button>
+                  <button class="btn btn-info" ng-show="editing" ng-click="pokemonCtrl.editPoke(poke); editing = false">Save Changes</button>
                 </div>
               </div>
             </div>
