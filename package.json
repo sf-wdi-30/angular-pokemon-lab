@@ -1,0 +1,19 @@
+{
+  "name": "angular-pokemon-lab",
+  "version": "1.0.0",
+  "description": "| **Objectives** | | :---- | | Get practice building an Angular client side | | Use $http to access a RESTful API |",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgrahams101/angular-pokemon-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tgrahams101/angular-pokemon-lab/issues"
+  },
+  "homepage": "https://github.com/tgrahams101/angular-pokemon-lab#readme"
+}
