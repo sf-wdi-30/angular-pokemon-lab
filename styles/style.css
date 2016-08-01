@@ -1,0 +1,28 @@
+.jumbotron {
+  background-image: url(../images/Pokemon-show.png);
+  /*background-position: center;*/
+  background-size: cover;
+  color: white;
+  height:500px;
+  /*margin-bottom: 400px;*/
+}
+
+#bottomHr {
+  height: 15px;
+  background: #fff url(../images/pokeball.png) repeat scroll center;
+}
+
+div.bottomHr hr {
+  display: none;
+}
+
+form {
+  background-color: white;
+
+}
+
+
+
+/*#newPostForm {
+  display:none;
+}*/

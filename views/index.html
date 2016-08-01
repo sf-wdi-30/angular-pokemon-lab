@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="pokemonapp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ted's Poke Chest</title>
+    <!-- Stylesheets -->
+           <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel="stylesheet" href="../styles/style.css">
+
+                <!-- VENDOR SCRIPTS -->
+          <script src="../bower_components/angular/angular.min.js"></script>
+          <script src="../bower_components/angular-route/angular-route.min.js"></script>
+              <!-- Client-side Script -->
+            <script src="../scripts/script.js"></script>
+
+  </head>
+  <body ng-controller="PokemonController as pokemonControl">
+    <div class="jumbotron">
+        <div class='container' id="jumbo">
+          <h1>Angular Pokemon</h1>
+          <p>Share and engage with fans and friends</p>
+          <p><a class="btn btn-primary btn-lg" id="newPostButton">Caught a new pokemon?</a></p>
+
+
+
+
+        </div>
+      </div>
+  <div class="container">
+    <div id="newPostFormDiv" class="col-md-3 ">
+    <h4>  Submit caught pokemon!</h4>
+    <form id="newPostForm" ng-submit="pokemonControl.submitPoke()">
+
+      <input type="text" class="form-control" name="name" placeholder="Name of Pokemon" ng-model="pokemonControl.newPoke.name" required></br></br>
+      <input type="text" class="form-control" name="pokedex" placeholder="Pokedex number" ng-model="pokemonControl.newPoke.pokedex" required></br></br>
+      <input type="text" class="form-control" name="evolves_from" placeholder="Evolves from" ng-model="pokemonControl.newPoke.evolves_from" required></br></br>
+      <input type="text" class="form-control" name="image" placeholder="Image Url" ng-model="pokemonControl.newPoke.image" required></br></br>
+      <input id="newPostSubmitButton" type="submit" class="btn btn-primary">
+      <!-- <button type="button" class="btn btn-default btn-xs" id="newPostCancelButton">
+  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+  </button> -->
+    </form>
+
+  </div>
+    <div class="container col-md-12">
+      <div id="searchBar">
+        <h1> Pokemon Ordered Alphabetically by Name </h1>
+        <br />
+            <label>Search: <input ng-model="searchText"></label> <br /> <br />
+       </div>
+
+      <div ng-repeat="poke in pokemonControl.pokemon | orderBy:'name' | filter:searchText">
+          <div ng-hide="editing">
+              <p>{{poke.name}}<br />
+
+               {{poke.pokedex}}
+              <br />
+              {{poke.evolves_from}}
+              <hr>
+            <img src={{poke.image}}></br>
+         </div>
+          <button id="deletebutton" class='btn btn-danger' ng-click="pokemonControl.deletePoke(poke)">Delete</button>
+          <button class='btn btn-info' ng-hide="editing" ng-click="editing = true">Edit Poke Entry</button>
+          <button class='btn btn-success' ng-show="editing" ng-click="pokemonControl.editPoke(poke); editing = false">Save Changes</button>
+          <button class='btn btn-default' ng-show="editing" ng-click="PokemonControl.cancel(poke); editing = false">Cancel Changes</button>
+          <input ng-show="editing" ng-model="poke.name" type="text" class="form-control input-md">
+          <input ng-show="editing" ng-model="poke.pokedex" type="text" class="form-control input-md">
+          <input ng-show="editing" ng-model="poke.evolves_from" type="text" class="form-control input-md">
+          <input ng-show="editing" ng-model="poke.image" type="text" class="form-control input-md">
+          <hr>
+          <div id="bottomHr"><hr /></div>
+          <br />
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
