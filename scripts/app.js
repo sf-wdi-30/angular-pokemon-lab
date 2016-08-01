@@ -53,7 +53,7 @@ function PokemonIndexController($http) {
       url: 'https://super-crud.herokuapp.com/pokemon/' + poke._id,
       data: poke
     }).then(function successCb(json) {
-      // check html
+      console.log(json);
     }, function errorCb(response) {
       console.log('ERROR', response);
     });
