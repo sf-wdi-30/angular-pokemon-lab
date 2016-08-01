@@ -37,14 +37,20 @@
       <input type="text" class="form-control" name="evolves_from" placeholder="Evolves from" ng-model="pokemonControl.newPoke.evolves_from" required></br></br>
       <input type="text" class="form-control" name="image" placeholder="Image Url" ng-model="pokemonControl.newPoke.image" required></br></br>
       <input id="newPostSubmitButton" type="submit" class="btn btn-primary">
-      <button type="button" class="btn btn-default btn-xs" id="newPostCancelButton">
+      <!-- <button type="button" class="btn btn-default btn-xs" id="newPostCancelButton">
   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-  </button>
+  </button> -->
     </form>
 
   </div>
+    <div class="container col-md-12">
+      <div id="searchBar">
+        <h1> Pokemon Ordered Alphabetically by Name </h1>
+        <br />
+            <label>Search: <input ng-model="searchText"></label> <br /> <br />
+       </div>
 
-      <div ng-repeat="poke in pokemonControl.pokemon">
+      <div ng-repeat="poke in pokemonControl.pokemon | orderBy:'name' | filter:searchText">
           <div ng-hide="editing">
               <p>{{poke.name}}<br />
 
@@ -65,7 +71,8 @@
           <hr>
           <div id="bottomHr"><hr /></div>
           <br />
+          </div>
       </div>
-  </div>
+    </div>
   </body>
 </html>
