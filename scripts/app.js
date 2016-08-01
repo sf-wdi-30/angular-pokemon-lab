@@ -47,9 +47,11 @@ function PokeIndexController($http) {
     };
 
     app.editPoke = function(pokemon) {
+
         $http({
             method: 'PUT',
-            url: 'https://super-crud.herokuapp.com/pokemon/' + pokemon._id
+            url: 'https://super-crud.herokuapp.com/pokemon/' + pokemon._id,
+            data: pokemon
         }).then(function successCallback(json) {
         }, function errorCallback(response) {
             console.log('There was an error editing the data', response);
