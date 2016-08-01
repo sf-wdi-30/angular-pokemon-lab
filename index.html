@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="pokemonApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.js"></script>
+    <script src="scripts/app.js"></script>
+
+    <title>Angular Pokemon Lab</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Dirty Thirty Pokedex</h1>
+        <p>Gotta CRUD 'em all!</p>
+      </div>
+    </div>
+
+    <div class="container" ng-controller="PokemonIndexController as pokemonCtrl">
+      <div ng-repeat="poke in pokemonCtrl.pokemon">
+        <div class="col-md-10">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <!-- <div class="col-md-3">
+                  <h4 ng-show="showing"><a href="#" ng-hide="showing" ng-click="pokemonCtrl.showPoke(poke); showing = true">{{ poke.name }}</a></h4>
+                  <img ng-show="showing" src="{{ poke.image }}">
+                  <p ng-show="showing"># : {{ poke.pokedex }}</p>
+                  <p ng-show="showing">Evolves from : {{ poke.evolves_from}}</p>
+                </div> -->
+                <div class="col-md-3">
+                  <h4 ng-hide="editing"><a href="#" ng-click="pokemonCtrl.showPoke(poke)">{{ poke.name }}</a></h4>
+                  <input ng-show="editing" ng-model="poke.name" type="text" class="form-control">
+                  <img src="{{ poke.image }}" ng-hide="editing">
+                  <input ng-model="poke.image" ng-show="editing" type="text" class="form-control">
+                  <p># : <span ng-hide="editing">{{ poke.pokedex }}</span></p>
+                  <input ng-show="editing" ng-model="poke.pokedex" type="text" class="form-control">
+                  <p>Evolves from : <span ng-hide="editing">{{ poke.evolves_from}}</span></p>
+                  <input ng-show="editing" ng-model="poke.evolves_from" type="text" class="form-control">
+                </div>
+                <div class="col-md-3"> <!-- BUTTONS -->
+                  <button class="btn btn-info" ng-show="showing" ng-click="pokemonCtrl.showPoke(poke); showing = false">View all Pokemon</button>
+                  <button class="btn btn-warning" ng-click="pokemonCtrl.deletePoke(poke)">Delete</button>
+                  <button class="btn btn-primary" ng-click="pokemonCtrl.editPoke(poke); editing = true">Edit</button>
+                  <button class="btn btn-info" ng-show="editing" ng-click="pokemonCtrl.editPoke(poke); editing = false">Save Changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
